@@ -1,0 +1,5 @@
+English = int(input())
+English_list = set(map(int,input().split()))
+French = int(input())
+French_list = set(map(int,input().split()))
+print(len(English_list.difference(French_list)))
