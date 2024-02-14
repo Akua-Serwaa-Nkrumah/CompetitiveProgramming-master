@@ -10,3 +10,4 @@ class Solution:
                 stack.pop()
             stack.append(nums[i])
         return False
+ 
