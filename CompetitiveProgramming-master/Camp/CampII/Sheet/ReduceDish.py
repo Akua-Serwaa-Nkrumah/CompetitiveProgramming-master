@@ -1,5 +1,5 @@
 class Solution:
-    def maxSatisfaction(self, satisfaction: [int]) -> int:
+    def maxSatisfaction(self, satisfaction: list[int]) -> int:
         satisfaction.sort()
         res = satisfaction[-1]
 

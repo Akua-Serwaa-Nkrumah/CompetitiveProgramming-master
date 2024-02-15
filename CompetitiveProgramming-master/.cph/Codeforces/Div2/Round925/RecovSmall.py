@@ -7,20 +7,26 @@ for _ in range(t):
             s += 'z'
 
         if len(s) == 3:
-            print(s[:-1])
+            print(s[::-1])
         else:
             if len(s) == 2:
-                n = n%26
-                rem = chr(n+64)
-                rem = rem.lower()
-                s += rem
-                print(s[::-1])
+                n -= 52
+                if n < 1:
+                    s = 'z'
+                    n += 26
+                    s += 'ya'
+                    print(s[::-1])
+                else:
+                    rem = chr(n+64)
+                    rem = rem.lower()
+                    s += rem
+                    print(s[::-1])
             else:
                 rem = 'a'
                 rem += chr(64+n-1)
                 rem = rem.lower()
 
-                s =rem + s
+                s = rem + s
                 print(s)
 
     else:
