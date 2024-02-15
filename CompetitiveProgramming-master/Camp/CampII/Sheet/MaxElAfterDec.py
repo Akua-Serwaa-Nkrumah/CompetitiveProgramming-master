@@ -1,5 +1,5 @@
 class Solution:
-    def maximumElementAfterDecrementingAndRearranging(self, arr: [int]) -> int:
+    def maximumElementAfterDecrementingAndRearranging(self, arr: list[int]) -> int:
         arr.sort()
         
         if arr[0] != 1:
