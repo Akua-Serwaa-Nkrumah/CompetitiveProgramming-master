@@ -1,3 +1,5 @@
+from math import ceil
+
 class Solution:
     def minimizeArrayValue(self, nums: list[int]) -> int:
         total = 0
