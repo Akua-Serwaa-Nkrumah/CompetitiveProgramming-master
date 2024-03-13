@@ -1,3 +1,4 @@
+# Dijkstra'a Algorithm
 from heapq import heapify, heappop, heappush
 from collections import defaultdict
 
@@ -39,3 +40,24 @@ class Solution:
             return -1
 
         return max(ans)
+
+# Floyd-Warshall's Algorithm
+class Solution:
+    def networkDelayTime(self, times: list[list[int]], n: int, k: int) -> int:
+        matrix = [[float('inf') for _ in range(n)] for _ in range(n)]
+        
+        for time in times:
+            matrix[time[0]-1][time[1]-1] = min(matrix[time[0]-1][time[1]-1],time[2])
+
+        for i in range(n):
+            matrix[i-1][i-1] = 0
+
+        for a in range(n):
+            for i in range(n):
+                for j in range(n):
+                    matrix[i][j] = min(matrix[i][j],matrix[i][a]+matrix[a][j])
+
+        if float('inf') in matrix[k-1]:
+            return -1
+
+        return max(matrix[k-1])
