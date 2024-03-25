@@ -1,15 +1,27 @@
-from collections import defaultdict
-
 t = int(input())
 for _ in range(t):
     n,m = map(int,input().split())
 
     k = list(map(int,input().split()))
     c = list(map(int,input().split()))
-    c = [0] + c
-    dic = defaultdict(int)
+    
     cst = 0
+    k.sort(reverse= True)
 
-    for i in range(n):
-        min(min(c[1:k[i]+1]),c[k[i]])
+    i,j = 0, 0
+    
+    while j < m and i < n:
+        if c[j] > c[k[i]-1]:
+            cst += c[k[i]-1]
+            
+        else:
+            cst += c[j]
+            j += 1
+
+        i += 1
+
+    while i < n:
+        cst += c[k[i]-1]
+        i += 1
+
     print(cst)

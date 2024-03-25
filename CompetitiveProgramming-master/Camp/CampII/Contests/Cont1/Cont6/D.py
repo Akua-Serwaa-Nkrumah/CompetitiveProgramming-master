@@ -6,21 +6,20 @@ for _ in range(t):
     n = int(input())
     s = input()
 
-    if '+' not in s or '-' not in s:
-        print(s.count('-')//2)
-    else:
-        cnt = 0
-        minus, plus = 0, 0
-        stack = deque([])
-        for i in range(n):
-            if stack:
-                if (s[i] == '+' and stack[-1] == '-') or (s[i] == '-'):
-                    cnt += 1
-                
-                stack.popleft()
-            stack.append(s[i])
+    prefix = [0]
 
-        if s.count('+') == s.count('-'):
-            cnt += 1
+    cnt = 0
 
-        print(cnt)
+    for i in range(n):
+        if s[i] == '+':
+            prefix.append(prefix[-1] + 1)
+
+        else:
+            prefix.append(prefix[-1]-1)
+
+    for i in range(n+1):
+        for j in range(i+1,n+1):
+            if prefix[i] >= prefix[j] and (prefix[i] - prefix[j])%3 == 0:
+                cnt += 1
+
+    print(cnt)
